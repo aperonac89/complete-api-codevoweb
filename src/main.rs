@@ -1,5 +1,6 @@
 mod config;
 mod db;
+mod models;
 
 use actix_web::{get, middleware::Logger, web, App, HttpResponse, HttpServer, Responder};
 use config::Config;
