@@ -13,8 +13,8 @@ impl Config {
         let jwt_maxage = std::env::var("JWT_MAXAGE").expect("JWT_MAXAGE must be set");
 
         Config {
-            database_url: database_url,
-            jwt_secret: jwt_secret,
+            database_url,
+            jwt_secret,
             jwt_maxage: jwt_maxage.parse::<i64>().unwrap(),
             port: 8000,
         }

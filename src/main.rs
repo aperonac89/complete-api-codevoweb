@@ -32,13 +32,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let db_client = DBClient::new(pool);
     let app_state: AppState = AppState {
         env: config.clone(),
-        db_client: db_client,
+        db_client,
     };
 
-    println!(
-        "{}",
-        format!("Server is running on http://localhost:{}", config.port)
-    );
+    println!("Server is running on http://localhost:{}", config.port);
 
     HttpServer::new(move || {
         App::new()
