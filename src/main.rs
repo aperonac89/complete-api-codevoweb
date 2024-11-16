@@ -1,12 +1,12 @@
 mod config;
 mod db;
 
-use actix_web::{get, middleware::Logger, App, HttpResponse, HttpServer, Responder, web};
+use actix_web::{get, middleware::Logger, web, App, HttpResponse, HttpServer, Responder};
 use config::Config;
 use db::DBClient;
 use dotenv::dotenv;
-use sqlx::postgres::PgPoolOptions;
 use serde_json::json;
+use sqlx::postgres::PgPoolOptions;
 
 #[derive(Debug, Clone)]
 pub struct AppState {

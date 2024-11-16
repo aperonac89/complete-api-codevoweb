@@ -7,6 +7,6 @@ pub struct DBClient {
 
 impl DBClient {
     pub fn new(pool: Pool<Postgres>) -> Self {
-        DBClient { pool: pool }
+        DBClient { pool }
     }
 }
