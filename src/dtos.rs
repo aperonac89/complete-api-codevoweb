@@ -79,7 +79,7 @@ impl FilterUserDto {
         }
     }
 
-    pub fn filter_users(users: &[Users]) -> Vec<FilterUserDto> {
+    pub fn filter_users(users: &[User]) -> Vec<FilterUserDto> {
         users.iter().map(FilterUserDto::filter_user).collect()
     }
 }

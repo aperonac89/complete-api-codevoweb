@@ -1,8 +1,14 @@
 mod config;
 mod db;
+mod dtos;
+mod errors;
+mod extractors;
 mod models;
+mod scopes;
+mod utils;
 
 use actix_web::{get, middleware::Logger, web, App, HttpResponse, HttpServer, Responder};
+use actix_cors::Cors;
 use config::Config;
 use db::DBClient;
 use dotenv::dotenv;

@@ -69,7 +69,7 @@ impl UserExt for DBClient {
     }
 
     async fn get_users(&self, page: u32, limit: usize) -> Result<Vec<User>, sqlx::Error> {
-        let offset = (page -1) * limit as u32;
+        let offset = (page - 1) * limit as u32;
         let users = sqlx::query_as!(
             User,
             r#"SELECT id, name, email, password, photo, verified, created_at, updated_at, role as "role: UserRole" FROM users LIMIT $1 OFFSET $2"#,
@@ -116,7 +116,7 @@ impl UserExt for DBClient {
         )
         .fetch_one(&self.pool)
         .await?;
-        
+
         Ok(user)
     }
 }

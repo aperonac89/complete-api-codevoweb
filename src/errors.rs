@@ -160,7 +160,7 @@ impl fmt::Display for HttpError {
 
 impl std::error::Error for HttpError{}
 
-impl RepsonseError for HttpError {
+impl ResponseError for HttpError {
     fn error_response(&self) -> HttpResponse<actix_web::body::BoxBody> {
         let cloned = self.clone();
         cloned.into_http_response()

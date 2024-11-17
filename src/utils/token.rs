@@ -1,7 +1,7 @@
 use chrono::{Utc, Duration};
-use jsonwebtoken::{decode, encode, Algorithm, Decodingkey, EncodingKey, Header, Validation};
+use jsonwebtoken::{decode, encode, Algorithm, DecodingKey, EncodingKey, Header, Validation};
 use serde::{Deserialize, Serialize};
-use crate::errors::ErrorMessage;
+use crate::errors::{ErrorMessage, HttpError};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TokenClaims {
@@ -35,10 +35,10 @@ pub fn create_token (
     )
 }
 
-pub fn decode_token<T: Intro<String>>(token: T, secret: &[u8]) -> Result<String, HttpError> {
+pub fn decode_token<T: Into<String>>(token: T, secret: &[u8]) -> Result<String, HttpError> {
     let decoded = decode::<TokenClaims>(
         &token.into(),
-        &Decodingkey::from_secret(secret),
+        &DecodingKey::from_secret(secret),
         &Validation::new(Algorithm::HS256),
     );
 
